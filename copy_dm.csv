@@ -1,0 +1,349 @@
+target_table,cm_table,target_column,data_type,description,reference_key,reference_column_name,remarks,included_data_model_v1
+dim_barangay,barangay,barangay_key,Integer,unique identifier of  the barangay,Primary Key,,,Yes
+dim_barangay,barangay,city_key,Integer,unique identifier of  the city where the barangay belongs to,Foreign Key,dim_city.city_key,,Yes
+dim_barangay,barangay,province_key,Integer,unique identifier of the province,Foreign Key,dim_province.province_key,,Yes
+dim_barangay,barangay,region_key,Integer,unique identifier of region,Foreign Key,dim_region.region_key,,Yes
+dim_barangay,barangay,country_key,Integer,unique identifier of country,Foreign Key,dim_country.country_key,,Yes
+dim_barangay,barangay,barangay_name,Varchar,label name of the barangay,,,,Yes
+dim_barangay,barangay,is_urban,Boolean,indicator whether the barangay is classified as urban or rural,,,,Yes
+dim_barangay,barangay,population_2020,Integer,latest population figure of barangay,,,,Yes
+dim_barangay,barangay,latitude,Decimal,barangay latitude defined in coordinate_system,,,,Yes
+dim_barangay,barangay,longitude,Decimal,barangay longitude defined in coordinate_system,,,,Yes
+dim_barangay,barangay,geometry: polygon,Array,barangay administrative boundary polygon given by the GADM,,,,Yes
+dim_barangay,barangay,centroid,Array,"barangay centroid in (latitude, longitude) defined in the coordinate_system",,,,Yes
+dim_barangay,barangay,crs,Varchar,coordinate system used,,,,Yes
+dim_barangay,barangay,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_barangay,barangay,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_branch,branch,branch_key,Integer,unique identifier of the branch,Primary Key,,,Yes
+dim_branch,branch,business_unit_key,Integer,unique identifier of the business unit which the branch belongs to,Foreign Key,dim_business_unit.business_unit_key,,Yes
+dim_branch,branch,company_key,Integer,unique identifier of the company which the branch belongs to,Foreign Key,dim_company.company_key,,Yes
+dim_branch,branch,country_key,Integer,unique identifier of the country where the branch belongs to,Foreign Key,dim_country.country_key,,Yes
+dim_branch,branch,region_key,Integer,unique identifier of the region where the branch belongs to,Foreign Key,dim_region.region_key,,Yes
+dim_branch,branch,province_key,Integer,unique identifier of the province where the branch belongs to,Foreign Key,dim_province.province_key,,Yes
+dim_branch,branch,city_key,Integer,unique identifier of the city where the branch belongs to,Foreign Key,dim_city.city_key,,Yes
+dim_branch,branch,barangay_key,Integer,unique identifier of the barangay where the branch belongs to,Foreign Key,dim_barangay.barangay_key,,Yes
+dim_branch,branch,location_key,Integer,unique identifier of the location where the branch belongs to,Foreign Key,dim_location.location_key,,Yes
+dim_branch,branch,code,Varchar,code used to identify the branch,,,,Yes
+dim_branch,branch,branch_name,Varchar,label name of the branch ,,,,Yes
+dim_branch,branch,branch_short_name,Varchar,abbreviation used to identify the branch,,,,Yes
+dim_branch,branch,inside_outside_sm,Varchar,"name of the mall where the branch is located, if applicable",,,,Yes
+dim_branch,branch,mall_name,Varchar,identifier whether the branch resides within SM Malls,,,,Yes
+dim_branch,branch,classification,Varchar,branch classification identified by the business,,,,Yes
+dim_branch,branch,years_since_opening_date,Integer,mall age as of updating,,,,Yes
+dim_branch,branch,age_group,Varchar,age bin where the branch belongs to,,,,Yes
+dim_branch,branch,operational_hours,Varchar,opening and closing hours of branch,,,,Yes
+dim_branch,branch,classification,Varchar,label classification of the branch,,,,Yes
+dim_branch,branch,size,Varchar,"size classification of the branch (categorical, numeric)",,,,Yes
+dim_branch,branch,hub_spoke,Varchar,indicator whether the branch serves as a hub or spoke,,,,Yes
+dim_branch,branch,opening_date,Date,date when the branch was opened,,,,Yes
+dim_branch,branch,closing_date,Date,date when the branch was closed (if applicable),,,,Yes
+dim_branch,branch,longitude,Decimal,longitude of branch,,,,Yes
+dim_branch,branch,latitude,Decimal,latitude of branch,,,,Yes
+dim_branch,branch,postal_code,Integer,postal code of branch,,,,Yes
+dim_branch,branch,plus_code,Varchar,location plus code of branch,,,,Yes
+dim_branch,branch,segment,Varchar,branch segment identified by clustering,,,,Yes
+dim_branch,branch,status,Varchar,indicator whether the branch is still operating,,,,Yes
+dim_branch,branch,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_branch,branch,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_brand,brand,brand_key,Integer,unique identifier of  the brand,Primary Key,,,Yes
+dim_brand,brand,brand_name,varchar,label name of the brand,,,,Yes
+dim_brand,brand,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_brand,brand,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_brand,brand,brand_key,Integer,unique identifier of  the brand,Primary Key,,,Yes
+dim_brand,brand,brand_name,Varchar,label name of the brand,,,,Yes
+dim_brand,brand,created_date,Date,date and time when the record was created,,,,Yes
+dim_brand,brand,updated_date,Date,date and time when the record was most recently updated or modified,,,,Yes
+dim_business_group,None,business_group_key,Integer,unique identifier of the business unit group,Primary Key,ÿ,ÿ,Yes
+dim_business_group,None,business_group_name,varchar,label name of the business unit group,ÿ,ÿ,ÿ,Yes
+dim_business_group,None,description,varchar,description or summary of the relevant information about the business unit group,ÿ,ÿ,ÿ,Yes
+dim_business_group,None,created_date,Timestamp,date and time when the record was created,ÿ,ÿ,ÿ,Yes
+dim_business_group,None,updated_date,Timestamp,date and time when the record was most recently updated or modified,ÿ,ÿ,ÿ,Yes
+dim_business_unit,business unit,business_unit_key,Integer,unique identifier of the business unit ,Primary Key,ÿ,,Yes
+dim_business_unit,business unit,channel_key,Integer,unique identifier of the sales channel that the business unit uses to interact with customers,Foreign Key,dim_channel.channel_key,ÿ,Yes
+dim_business_unit,business unit,business_group_key,Integer,unique identifier of the business unit grouping within SM Conglomerates,Foreign Key,dim_business_group.business_group_key,ÿ,Yes
+dim_business_unit,business unit,busines_unit_name,varchar,label name of the business unit,ÿ,ÿ,ÿ,Yes
+dim_business_unit,business unit,description,varchar,description or summary of the relevant information about the business unit,ÿ,ÿ,ÿ,Yes
+dim_business_unit,business unit,created_date,Timestamp,date and time when the record was created,ÿ,ÿ,ÿ,Yes
+dim_business_unit,business unit,updated_date,Timestamp,date and time when the record was most recently updated or modified,ÿ,ÿ,ÿ,Yes
+dim_category,category,category_key,Integer,unique identifier of the category,Primary Key,,"MKT-department, TSS-class",Yes
+dim_category,category,subdivision_key,Integer,unique identifier of the subdivision,Foreign Key,dim_subdivision.subdivision_key,"MKT-subdivision, TSS-subdepartment",Yes
+dim_category,category,category_name,Varchar,label name of the category,,,"MKT-department, TSS-class",Yes
+dim_category,category,description,Varchar,description or summary of the relevant information about the category,,,,Yes
+dim_category,category,created_date,Date,date and time when the record was created,,,"MKT-department, TSS-class",Yes
+dim_category,category,updated_date,Date,date and time when the record was most recently updated or modified,,,"MKT-department, TSS-class",Yes
+dim_channel,channel,channel_key,Integer,"unique identifier of the sales channel that the business unit uses to interact with customers
+Online, Instore and Hybrid",Primary Key,ÿ,ÿ,Yes
+dim_channel,channel,channel_name,varchar,label name of the channel,ÿ,ÿ,ÿ,Yes
+dim_channel,channel,description,varchar,description or summary of the relevant information about the channel,ÿ,ÿ,ÿ,Yes
+dim_channel,channel,created_date,Timestamp,date and time when the record was created,ÿ,ÿ,ÿ,Yes
+dim_channel,channel,updated_date,Timestamp,date and time when the record was most recently updated or modified,ÿ,ÿ,ÿ,Yes
+dim_city,city_municipality,city_key,Integer,unique identifier of the city,Primary Key,,,Yes
+dim_city,city_municipality,province_key,Integer,unique identifier of the province where the city belongs to,Foreign Key,dim_province.province_key,,Yes
+dim_city,city_municipality,region_key,Integer,unique identifier of region,Foreign Key,dim_region.region_key,,Yes
+dim_city,city_municipality,country_key,Integer,unique identifier of country,Foreign Key,dim_country.country_key,,Yes
+dim_city,city_municipality,population_2020,Integer,latest population figure of lgu,,,,Yes
+dim_city,city_municipality,latitude,Decimal,lgu latitude defined in coordinate_system,,,,Yes
+dim_city,city_municipality,longitude,Decimal,lgu longitude defined in coordinate_system,,,,Yes
+dim_city,city_municipality,geometry: polygon,Array,"administrative lgu (city/municipality) polygon centroid in (latitude, longitude) defined by crs",,,,Yes
+dim_city,city_municipality,centroid,Array,"lgu centroid in (latitude, longitude) defined in the coordinate_system",,,,Yes
+dim_city,city_municipality,crs,Varchar,coordinate system used,,,,Yes
+dim_city,city_municipality,city_name,Varchar,label name of the city,,,,Yes
+dim_city,city_municipality,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_city,city_municipality,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_age_bin,None,age_bin_key,,,,,,Yes
+dim_age_bin,None,name,,,,,,Yes
+dim_age_bin,None,created_date,Yes,,,,,Yes
+dim_age_bin,None,updated_date,Yes,,,,,Yes
+dim_age_group,None,age_group_key,,,,,,Yes
+dim_age_group,None,name,,,,,,Yes
+dim_age_group,None,created_date,,,,,,Yes
+dim_age_group,None,updated_date,,,,,,Yes
+dim_company,company,company_key,Integer,unique identifier of the company ,Primary Key,ÿ,ÿ,Yes
+dim_company,company,company_name,varchar,label name of the company,ÿ,ÿ,ÿ,Yes
+dim_company,company,code,varchar,code label or abbreviation used to identify the company,,,,Yes
+dim_company,company,description,varchar,description or summary of the relevant information about the company,ÿ,ÿ,ÿ,Yes
+dim_company,company,created_date,Timestamp,date and time when the record was created,ÿ,ÿ,ÿ,Yes
+dim_company,company,updated_date,Timestamp,date and time when the record was most recently updated or modified,ÿ,ÿ,ÿ,Yes
+dim_country,country,country_key,Integer,unique identifier of the country,Primary Key,,,Yes
+dim_country,country,country_name,Varchar,country administrative name,,,,Yes
+dim_country,country,population,Integer,latest population figure of country,,,,Yes
+dim_country,country,latitude,Decimal,country latitude defined in coordinate_system,,,,Yes
+dim_country,country,longitude,Decimal,country longitude defined in coordinate_system,,,,Yes
+dim_country,country,geometry: polygon,Array,country administrative boundary polygon given by the GADM,,,,Yes
+dim_country,country,centroid,Array,"country centroid in (latitude, longitude) defined in the coordinate_system",,,,Yes
+dim_country,country,crs,Varchar,coordinate system used,,,,Yes
+dim_country,country,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_country,country,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_date,date,date_key,Integer,unique identifier of the date,Primary Key,,,Yes
+dim_date,date,date,Date,date value,,,,Yes
+dim_date,date,year,Integer,year value of the date,,,,Yes
+dim_date,date,quarter,Integer,quarter value of the year (1-4),,,,Yes
+dim_date,date,month,Integer,month value of the year (1-12),,,,Yes
+dim_date,date,day,Integer,day value of the date (1-32),,,,Yes
+dim_date,date,is_weekday,Boolean,indicator where the date is a weekday (1) or not (0),,,,Yes
+dim_date,date,month_name,varchar,"name of the month (e.g. January, February, etc.)",,,,Yes
+dim_date,date,day_name,varchar,"name of the day (e.g. Monday, Tuesday, etc.)",,,,Yes
+dim_date,date,day_of_week,Integer,"day of the week (1-7, where 1 is Sunday)",,,,Yes
+dim_date,date,day_of_year,Integer,day of the year (1-365 or 366 for leap years),,,,Yes
+dim_date,date,week_of_month,Integer,week number of the month (1-5),,,,Yes
+dim_date,date,week_of_year,Integer,week number of the year (1-52 or 53),,,,Yes
+dim_date,date,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_date,date,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_date,date,is_week_start,Boolean,if date starts the week,,,,Yes
+dim_date,date,is_week_end,Boolean,if date ends the week,,,,Yes
+dim_date,date,is_month_start,Boolean,if date starts the month,,,,Yes
+dim_date,date,is_month_end,Boolean,if date ends the month,,,,Yes
+dim_date,date,is_year_start,Boolean,if date starts the year,,,,Yes
+dim_date,date,is_year_end,Boolean,if date ends the year,,,,Yes
+dim_date,date,week_start,Date,date of start of week of date,,,,Yes
+dim_date,date,week_end,Date,date of end of week of date,,,,Yes
+dim_date,date,month_start,Date,date of start of month of date,,,,Yes
+dim_date,date,month_end,Date,date of end of month of date,,,,Yes
+dim_date,date,year_start,Date,date of start of year of date,,,,Yes
+dim_date,date,year_end,Date,date of end of year of date,,,,Yes
+dim_division,division,division_key,Integer,unique identifier of the division,Primary Key,ÿ,"MKT-division, TSS-department",Yes
+dim_division,division,division_name,Varchar,label name of the division,ÿ,ÿ,"MKT-division, TSS-department",Yes
+dim_division,division,description,Varchar,description or summary of the relevant information about the division,ÿ,ÿ,ÿ,Yes
+dim_division,division,created_date,Date,date and time when the record was created,ÿ,ÿ,"MKT-division, TSS-department",Yes
+dim_division,division,updated_date,Date,date and time when the record was most recently updated or modified,ÿ,ÿ,"MKT-division, TSS-department",Yes
+dim_generation,generation,generation_key,Integer,unique identifier of the generation,Primary Key,,,Yes
+dim_generation,generation,name,varchar,label name of the generation,,,,Yes
+dim_generation,generation,description,varchar,description or summary of the relevant information about the generation,,,,Yes
+dim_generation,generation,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_generation,generation,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_location,None,location_key,Integer,unique identifier of the location,Primary Key,,,Yes
+dim_location,None,country_key,varchar,label name of the country where the location is situated,,,,Yes
+dim_location,None,region_key,varchar,label name of the region where the location is situated,,,,Yes
+dim_location,None,province_key,varchar,label name of province where the location is situated,,,,Yes
+dim_location,None,city_key,varchar,label name of the city where the location is situated,,,,Yes
+dim_location,None,barangay_key,varchar,label name of the barangay where the location is situated,,,,Yes
+dim_location,None,country_name,varchar,label name of the country where the location is situated,,,,Yes
+dim_location,None,region_name,varchar,label name of the region where the location is situated,,,,Yes
+dim_location,None,province_name,varchar,label name of province where the location is situated,,,,Yes
+dim_location,None,city_name,varchar,label name of the city where the location is situated,,,,Yes
+dim_location,None,barangay_name,varchar,label name of the barangay where the location is situated,,,,Yes
+dim_location,None,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_location,None,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_location,None,location_key,Integer,unique identifier of the point of interest (PoI),Primary Key,,,Yes
+dim_location,None,country_key,Varchar,unique identifier of the PoI's country,Foreign Key,dim_country.country_key,,Yes
+dim_location,None,region_key,Varchar,unique identifier of the PoI's region,Foreign Key,dim_region.region_key,,Yes
+dim_location,None,province_key,Varchar,unique identifier of the PoI's province,Foreign Key,dim_province.province_key,,Yes
+dim_location,None,city_key,Varchar,unique identifier of the PoI's city/municipality/lgu,Foreign Key,dim_city.city_key,,Yes
+dim_location,None,barangay_key,Varchar,unique identifier of the PoI's barangay,Foreign Key,dim_barangay.barangay_key,,Yes
+dim_location,None,country_name,Varchar,label name of the PoI's country,,,,Yes
+dim_location,None,region_name,Varchar,label name of the PoI's region,,,,Yes
+dim_location,None,province_name,Varchar,label name of the PoI's province,,,,Yes
+dim_location,None,city_name,Varchar,label name of the PoI's city/municipality/lgu,,,,Yes
+dim_location,None,barangay_name,Varchar,label name of the PoI's barangay,,,,Yes
+dim_location,None,latitude,Decimal,PoI's latitude defined by the coordinate reference system (crs),,,,Yes
+dim_location,None,longitude,Decimal,PoI's longitude defined by the coordinate reference system (crs),,,,Yes
+dim_location,None,centroid,Array,"PoI's (latitude,longitude) defined by the coordinate reference system (crs)",,,,Yes
+dim_location,None,crs,Varchar,coordinate reference system used,,,,Yes
+dim_location,None,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_location,None,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_merch_business_unit,mbu,merch_business_unit_key,Integer,unique identifier of the merchandise business unit,Primary Key,ÿ,TSS only,Yes
+dim_merch_business_unit,mbu,merch_business_unit_name,Varchar,label name of the merchandise business unit,ÿ,ÿ,TSS only,Yes
+dim_merch_business_unit,mbu,description,Varchar,description or summary of the relevant information about the merchandise business unit,ÿ,ÿ,ÿ,Yes
+dim_merch_business_unit,mbu,created_date,Date,date and time when the record was created,ÿ,ÿ,TSS only,Yes
+dim_merch_business_unit,mbu,updated_date,Date,date and time when the record was most recently updated or modified,ÿ,ÿ,TSS only,Yes
+dim_province,province,province_key,Integer,unique identifier of the province,Primary Key,,,Yes
+dim_province,province,region_key,Integer,unique identifier of the region where the province belongs to,Foreign Key,dim_region.region_key,,Yes
+dim_province,province,country_key,Integer,unique identifier of the country,Foreign Key,dim_country.country_key,,Yes
+dim_province,province,province_name,Varchar,province administrative name,,,,Yes
+dim_province,province,population_2020,Integer,latest population figure of province,,,,Yes
+dim_province,province,latitude,Decimal,province latitude defined in coordinate_system,,,,Yes
+dim_province,province,longitude,Decimal,province longitude defined in coordinate_system,,,,Yes
+dim_province,province,geometry: polygon,Array,"administrative province polygon centroid in (latitude, longitude) defined by crs",,,,Yes
+dim_province,province,centroid,Array,"province centroid in (latitude, longitude) defined in the coordinate_system",,,,Yes
+dim_province,province,crs,Varchar,coordinate system used,,,,Yes
+dim_province,province,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_province,province,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_region,region,region_key,Integer,unique identifier of the region,Primary Key,,,Yes
+dim_region,region,country_key,Integer,unique identifier of the country where the region belongs to,Foreign Key,dim_country.country_key,,Yes
+dim_region,region,region_name,Varchar,region administrative name,,,,Yes
+dim_region,region,population_2020,Integer,latest population figure of region,,,,Yes
+dim_region,region,latitude,Decimal,region latitude defined in coordinate_system,,,,Yes
+dim_region,region,longitude,Decimal,region longitude defined in coordinate_system,,,,Yes
+dim_region,region,geometry [: polygon],Array,region administrative boundary polygon given by the GADM,,,,Yes
+dim_region,region,centroid,Array,"administrative region polygon centroid in (latitude, longitude) defined by crs",,,,Yes
+dim_region,region,crs,Varchar,coordinate reference system used,,,,Yes
+dim_region,region,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_region,region,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_subcategory,subcategory,subcategory_key,Integer,unique identifier of the subcategory,Primary Key,,"MKT-category, TSS-subclass",Yes
+dim_subcategory,subcategory,category_key,Integer,unique identifier of the category,Foreign Key,dim_category.category_key,"MKT-department, TSS-class",Yes
+dim_subcategory,subcategory,subcategory_name,Varchar,label name of the subcategory,,,"MKT-category, TSS-subclass",Yes
+dim_subcategory,subcategory,description,Varchar,description or summary of the relevant information about the subcategory,,,,Yes
+dim_subcategory,subcategory,created_date,Date,date and time when the record was created,,,"MKT-category, TSS-subclass",Yes
+dim_subcategory,subcategory,updated_date,Date,date and time when the record was most recently updated or modified,,,"MKT-category, TSS-subclass",Yes
+dim_subdivision,division,subdivision_key,Integer,unique identifier of the subdivision,Primary Key,,"MKT-subdivision, TSS-subdepartment",Yes
+dim_subdivision,subdivision,division_key,Integer,unique identifier of the division,Foreign Key,ÿdim_division.division_key,"MKT-division, TSS-department",Yes
+dim_subdivision,subdivision,subdivision_name,Varchar,label name of the subdivision,ÿ,ÿ,"MKT-subdivision, TSS-subdepartment",Yes
+dim_subdivision,subdivision,description,Varchar,description or summary of the relevant information about the subdivision,ÿ,ÿ,ÿ,Yes
+dim_subdivision,subdivision,created_date,Date,date and time when the record was created,,,"MKT-subdivision, TSS-subdepartment",Yes
+dim_subdivision,subdivision,updated_date,Date,date and time when the record was most recently updated or modified,,,"MKT-subdivision, TSS-subdepartment",Yes
+dim_subchannel,none,sub_channel_key,Integer,unique identifier of the subchannel ,,,,Yes
+dim_subchannel,none,channel_key,Integer,unique identifier of the channel ,,,,Yes
+dim_subchannel,none,subchannel_name,Varchar,label name of the subchannel,,,,Yes
+dim_subchannel,none,created_date,Date,date and time when the record was created,,,,Yes
+dim_subchannel,none,updated_date,Date,date and time when the record was most recently updated or modified,,,,Yes
+dim_time,none,time_key,Integer,unique identifier of the date,,,,Yes
+dim_time,none,time,Timestamp,time value ,,,,Yes
+dim_time,none,hour,varchar,measure hour of the day in a 14-hour clock format,,,,Yes
+dim_time,none,minute_of_hour,Integer,measure minute time within an hour,,,,Yes
+dim_time,none,second_of_minute,Integer,measure second time within a minute,,,,Yes
+dim_time,none,am_pm,varchar,indicator whether a time of day is in the morning or afternoon/evening,,,,Yes
+dim_time,none,part_of_day,varchar,"classification of time of day into general categories, such as morning, afternoon, evening, and night.",,,,Yes
+dim_time,none,military_hour,Integer,measure hour of the day in a 12-hour clock format,,,,Yes
+dim_time,none,military_minute,Integer,measure minute within an hour in a 24-hour clock format,,,,Yes
+dim_time,none,military_second,Integer,measure second within a minute in a 24-hour clock format,,,,Yes
+dim_time,none,created_date,Timestamp,date and time when the record was created,,,,Yes
+dim_time,none,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+dim_unit_of_measure,unit of measure,unit_of_measure_key,Integer,unique identifier of the unit of measure,Primary Key,,,Yes
+dim_unit_of_measure,unit of measure,unit,Varchar,label name of the unit of measure,,,,Yes
+dim_unit_of_measure,unit of measure,value_continuous,Decimal,numerical value of the unit,,,,Yes
+dim_unit_of_measure,unit of measure,value_categorical,Varchar,numerical value of the unit,,,,Yes
+dim_unit_of_measure,unit of measure,unit_value,Varchar,concatenated label name of unit of measure and value,,,,Yes
+dim_unit_of_measure,unit of measure,created_date,Date,date and time when the record was created,,,,Yes
+dim_unit_of_measure,unit of measure,updated_date,Date,date and time when the record was most recently updated or modified,,,,Yes
+brg_customer_address,None,customer_address_key,Integer,unique identifer of the customer and address,,,,Yes
+brg_customer_address,None,customer_key,Integer,unique identifer of the customer,,,,Yes
+brg_customer_address,None,location_key,Integer,unique identifier of the customer location generate by the geolocation pipeline,,,,Yes
+brg_customer_address,None,complete_address,varchar,claimed address of the customer,,,,Yes
+brg_customer_address,None,is_primary,Boolean,indicator whether the address is identified as primary or not,,,,Yes
+brg_customer_address,None,created_date,Timestamp,date and time when the record was created,,,,Yes
+brg_customer_address,None,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+brg_customer_business_unit,None,customer_business_unit_key,Integer,unique identifer of the customer and business unit,Primary Key,,,Yes
+brg_customer_business_unit,None,customer_key,Integer,unique identifer of the customer,Foreign Key,fct_customer.customer_key,,Yes
+brg_customer_business_unit,None,business_unit_key,Integer,unique identifer of the business unit,Foreign Key,dim_business_unit.business_unit_key,,Yes
+brg_customer_business_unit,None,account_id,Integer,unique identifier of the registered account on business unit,,,"CSN, SSO,CTD",Yes
+brg_customer_business_unit,None,sub_account_id,Integer,unique identifier of the registered sub_account on business unit,,,"SMAC, SSM, SMM",Yes
+brg_customer_business_unit,None,registration_date,date,date and time when the account is registered,,,,Yes
+brg_customer_business_unit,None,expiry_date_date,date,date and time when the account will be expired,,,,Yes
+brg_customer_business_unit,None,created_date,Timestamp,date and time when the record was created,,,,Yes
+brg_customer_business_unit,None,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+brg_customer_email_address,None,customer_email_address_key,Integer,unique identifer of the customer and email address,Primary Key,,,Yes
+brg_customer_email_address,None,customer_key,Integer,unique identifer of the customer,Foreign Key,fct_customer.customer_key,,Yes
+brg_customer_email_address,None,email_address,varchar,claimed email address of the customer,,,,Yes
+brg_customer_email_address,None,email_domain,varchar,domain of the email address,,,,Yes
+brg_customer_email_address,None,is_primary,Boolean,indicator whether the email address is identified as primary or not,,,,Yes
+brg_customer_email_address,None,created_date,Timestamp,date and time when the record was created,,,,Yes
+brg_customer_email_address,None,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+brg_customer_guid,None,brg_customer_guid_key,Integer,unique identifer of the customer and guid,Primary Key,,,Yes
+brg_customer_guid,None,customer_key,Integer,unique identifer of the customer,Foreign Key,fct_customer.customer_key,,Yes
+brg_customer_guid,None,persistent_id,varchar,unique identifer of the customer generated by TAMR,,,,Yes
+brg_customer_guid,None,created_date,Timestamp,date and time when the record was created,,,,Yes
+brg_customer_guid,None,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+brg_customer_mobile,None,customer_mobile_key,Integer,unique identifer of the customer and mobile number,Primary Key,,,Yes
+brg_customer_mobile,None,customer_key,Integer,unique identifer of the customer,Foreign Key,fct_customer.customer_key,,Yes
+brg_customer_mobile,None,mobile_number,varchar,mobile number of the customer,,,,Yes
+brg_customer_mobile,None,is_primary,Boolean,indicator whether the mobile number is identified as primary or not,,,,Yes
+brg_customer_mobile,None,created_date,Timestamp,date and time when the record was created,,,,Yes
+brg_customer_mobile,None,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+fct_customer,customer,customer_key,Integer,unique identifier of the customer,Primary Key,,,Yes
+fct_customer,customer,date_of_birth_key,Integer,unique identifer of the  customer's date of birth ,Foreign Key,dim_date.date_key,,Yes
+fct_customer,customer,age_group_key,Integer,unique identifer of the  customer's age group ,Foreign Key,dim_group.age_group_key,,Yes
+fct_customer,customer,age_bin_key,Integer,unique identifer of the  customer's age bin,Foreign Key,dim_group.age_bin_key,,Yes
+fct_customer,customer,generation_key,Integer,unique identifer of the generation which the customer belongs to,Foreign Key,dim_generation.generation_key,,Yes
+fct_customer,customer,gender,Integer,unique identifer of the country where the customer is located,Foreign Key,dim_country.country_key,,Yes
+fct_customer,customer,region_key,Integer,unique identifer of the region where the customer is located,Foreign Key,dim_region.region_key,,Yes
+fct_customer,customer,province_key,Integer,unique identifer of the province where the customer is located,Foreign Key,dim_province.province_key,,Yes
+fct_customer,customer,barangay_key,Integer,unique identifer of the barangay where the customer is located,Foreign Key,dim_barangay.barangay_key,,Yes
+fct_customer,customer,persistent_id,varchar,persistent id of the custoner based on TAMR customer mastering,,,,Yes
+fct_customer,customer,first_name,varchar,first name of the customer,,,,Yes
+fct_customer,customer,last_name,varchar,last name of the customer,,,,Yes
+fct_customer,customer,email_add,varchar,email address of the customer,,,,Yes
+fct_customer,customer,mobile_number,varchar,mobile number of the customer,,,,Yes
+fct_customer,customer,age,Integer,computed age of the customer,,,,Yes
+fct_customer,customer,gender,varchar,gender of the customer,,,,Yes
+fct_customer,customer,address,varchar,address of the customer,,,,Yes
+fct_customer,customer,busines_unit_account_size,Integer,count of accounts within the cluster based on TAMR customer mastering,,,,Yes
+fct_customer,customer,longitude,Decimal,longitude coordinate of the customer address,,,,Yes
+fct_customer,customer,latitude,Decimal,latitude coordinate of the customer address,,,,Yes
+fct_customer,customer,created_date,Timestamp,date and time when the record was created,,,,Yes
+fct_customer,customer,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
+fct_sku,SKU,sku_key,Integer,unique identifier of the sku product bought upon transaction fulfillment,Primary Key,,"MKT-article number, TSS-product code",Yes
+fct_sku,SKU,transaction_key,Integer,unique identifier of the transaction in which the SKU is sold,Foreign Key,fct_transaction.transaction_key,,Yes
+fct_sku,SKU,transaction_date_key,Integer,unique identifer of the date when the transaction has been fulfilled/completed,Foreign Key,dim_date.date_key,,Yes
+fct_sku,SKU,transaction_time_key,Integer,unique identifer of the time when the transaction has been fulfilled/completed,Foreign Key,dim_time.time_key,,Yes
+fct_sku,SKU,customer_key,Integer,   unique identifer of customer,Foreign Key,fct_customer.customer_key,,Yes
+fct_sku,SKU,branch_key,Integer,unique identifer of the branch where the transaction takes place,Primary Key/Foreign Key,dim_branch.branch_key,,Yes
+fct_sku,SKU,business_unit_key,Integer,unique identifer of the business unit where the transaction takes place,Foreign Key,dim_business_unit.business_unit_key,,Yes
+fct_sku,SKU,company_key,Integer,unique identifer of the company where the transaction takes place,Foreign Key,dim_company.company_key,,Yes
+fct_sku,SKU,channel_key,Integer,unique identifer of the channel where the transaction takes place,Foreign Key,dim_channel.channel_key,,Yes
+fct_sku,SKU,subchannel_key,Integer,unique identifer of the subchannel where the transaction takes place,Foreign Key,dim_channel.channel_key,,Yes
+fct_sku,SKU,product_description,Varchar,description or summary of the relevant information about the SKU,,,,Yes
+fct_sku,SKU,merch_business_unit_key,Integer,unique identifier of the merchandise business unit under which the SKU falls,Foreign Key,dim_merch_business_unit.merch_business_unit_key,TSS only,Yes
+fct_sku,SKU,division_key,Integer,unique identifier of the division under which the SKU falls,Foreign Key,dim_division.division_key,"MKT-division, TSS-department",Yes
+fct_sku,SKU,subdivision_key,Integer,unique identifier of the subdivision under which the SKU falls,Foreign Key,dim_subdivision.subdivision_key,"MKT-subdivision, TSS-subdepartment",Yes
+fct_sku,SKU,category_key,Integer,unique identifier of the category under which the SKU falls,Foreign Key,dim_category.category_key,"MKT-department, TSS-class",Yes
+fct_sku,SKU,subcategory_key,Integer,unique identifier of the subcategory under which the SKU falls,Foreign Key,dim_subcategory.subcategory_key,"MKT-category, TSS-subclass",Yes
+fct_sku,SKU,brand_key,Integer,unique identifier of the brand associated with the SKU,Foreign Key,dim_brand.brand_key,,Yes
+fct_sku,SKU,unit_of_measure_key,Integer,unique identifier of the unit of measure of the SKU,Foreign Key,dim_unit_of_measure.unit_of_measure_key,,Yes
+fct_sku,SKU,barcode,Varchar,barcode associated with the SKU,,,MKT only,Yes
+fct_sku,SKU,sku_code,Varchar,code idenitifying the SKU,,,TSS only,Yes
+fct_sku,SKU,amount,Decimal,total amount paid for the quantity of SKU sold or purchased,,,,Yes
+fct_sku,SKU,unit_price,Decimal,price per unit of the SKU,,,"MKT-derived,
+TSS- to clarify (last_cost, last_retail, orig_cost, orig_retail, price_tier)",Yes
+fct_sku,SKU,quantity,Decimal,total quantity/weight of the SKU sold or purchased,,,,Yes
+fct_sku,SKU,persistent_id,Integer,unique identifer of customer- generated by TAMR,,,,Yes
+fct_sku,SKU,created_date,Date,date and time when the record was created,,,,Yes
+fct_sku,SKU,updated_date,Date,date and time when the record was most recently updated or modified,,,,Yes
+fct_transaction,Transaction Header,transaction_key,Integer,unique identifer of the transaction,Primary Key,,,Yes
+fct_transaction,Transaction Header,customer_key,Integer,   unique identifer of customer,,,,Yes
+fct_transaction,Transaction Header,branch_key,Integer,unique identifer of the branch where the transaction takes place,Primary Key/Foreign Key,dim_branch.branch_key,,Yes
+fct_transaction,Transaction Header,business_unit_key,Integer,unique identifer of the business unit where the transaction takes place,Foreign Key,dim_business_unit.business_unit_key,,Yes
+fct_transaction,Transaction Header,company_key,Integer,unique identifer of the company where the transaction takes place,Foreign Key,dim_company.company_key,,Yes
+fct_transaction,Transaction Header,channel_key,Integer,unique identifer of the channel where the transaction takes place,Foreign Key,dim_channel.channel_key,,Yes
+fct_transaction,Transaction Header,subchannel_key,Integer,unique identifer of the subchannel where the transaction takes place,Foreign Key,dim_channel.channel_key,,Yes
+fct_transaction,Transaction Header,transaction_date_key,Integer,unique identifer of the date when the transaction has been fulfilled/completed,Foreign Key,dim_date.date_key,,Yes
+fct_transaction,Transaction Header,transaction_time_key,Integer,unique identifer of the time when the transaction has been fulfilled/completed,Foreign Key,dim_time.time_key,,Yes
+fct_transaction,Transaction Header,total_amount,Decimal,value of the total amount of the transaction,,,,Yes
+fct_transaction,Transaction Header,total_discount,Decimal,value of the total discount of the transaction,,,,Yes
+fct_transaction,Transaction Header,tota_sales,Decimal,value of the total sales of the transaction (amount - discount),,,,Yes
+fct_transaction,Transaction Header,total_product_quantity,Decimal,count of the total products bought in the transaction,,,,Yes
+fct_transaction,Transaction Header,total_unique_product_quantity,Integer,count of the total unique products bought in the transaction,,,,Yes
+fct_transaction,Transaction Header,smac_no,Integer,unique identifer of SMAC used upon purchase,,,,Yes
+fct_transaction,Transaction Header,smac_card_type,Varchar,card type of the SMAC used upon purchase,,,,Yes
+fct_transaction,Transaction Header,persistent_id,Varchar,unique identifer of customer- generated by TAMR,,,,Yes
+fct_transaction,Transaction Header,created_date,Timestamp,date and time when the record was created,,,,Yes
+fct_transaction,Transaction Header,updated_date,Timestamp,date and time when the record was most recently updated or modified,,,,Yes
